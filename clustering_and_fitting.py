@@ -5,7 +5,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression
 from sklearn.metrics import silhouette_score
 from scipy.stats import skew, kurtosis
 
