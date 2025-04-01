@@ -92,6 +92,8 @@ def relational_plot(dataframe, x_var, y_var, color_var=None):
         plt.legend(title=color_var)
     plt.tight_layout()
     plt.show()
+    plt.savefig('relational_plot.png')
+    return
 
 
 def categorical_top_genres_plot(dataframe, top_n=10):
@@ -123,6 +125,8 @@ def categorical_top_genres_plot(dataframe, top_n=10):
     plt.grid(axis="x", linestyle="--", alpha=0.7)
     plt.tight_layout()
     plt.show()
+    plt.savefig('categorical_plot.png')
+    return
 
 
 def plot_heatmap(dataframe):
@@ -143,6 +147,8 @@ def plot_heatmap(dataframe):
     plt.title("Correlation Heatmap")
     plt.tight_layout()
     plt.show()
+    plt.savefig('statistical_plot.png')
+    return
 
 
 def plot_distribution(dataframe):
@@ -228,6 +234,8 @@ def elbow_method(dataframe, features, max_k=10):
     plt.title("Elbow Method")
     plt.tight_layout()
     plt.show()
+    plt.savefig('elbow_plot.png')
+    return
 
 
 def silhouette_method(dataframe, features, max_k=10):
@@ -288,6 +296,7 @@ def k_means_clustering(dataframe, features, n_clusters=4):
     plt.title("K-Means Clustering")
     plt.tight_layout()
     plt.show()
+    plt.savefig('clustering.png')
     return dataframe
 
 
@@ -323,6 +332,7 @@ def polynomial_fit(dataframe, x_feature, y_feature, degree=3):
     plt.legend()
     plt.tight_layout()
     plt.show()
+    plt.savefig('fitting.png')
     return p
 
 
