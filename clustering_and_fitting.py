@@ -83,9 +83,7 @@ def relational_plot(dataframe, x_var, y_var, color_var=None):
         palette="viridis",
         alpha=0.7)
     plt.title(
-        f"Relational Plot: {
-            x_var.capitalize()} vs {
-            y_var.capitalize()}",
+        f"Relational Plot: {x_var.capitalize()} vs {y_var.capitalize()}",
         fontsize=14)
     plt.xlabel(x_var.capitalize(), fontsize=12)
     plt.ylabel(y_var.capitalize(), fontsize=12)
