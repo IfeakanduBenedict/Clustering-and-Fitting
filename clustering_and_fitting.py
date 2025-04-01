@@ -1,7 +1,7 @@
 """
 Clustering And Fitting.py
 
-This script performs data cleaning, visualization, clustering, and polynomial 
+This script performs data cleaning, visualization, clustering, and polynomial
 fitting on the Spotify dataset.
 It has been updated to match the lecturer’s GitHub template.
 """
@@ -60,7 +60,7 @@ def load_and_clean_data(data):
 # Visualization Functions
 def relational_plot(dataframe, x_var, y_var, color_var=None):
     """
-    Create a relational scatter plot for two variables, optionally colored by 
+    Create a relational scatter plot for two variables, optionally colored by
     a third variable.
 
     Parameters:
@@ -189,11 +189,11 @@ def elbow_method(dataframe, features, max_k=10):
     Parameters:
         dataframe (pd.DataFrame): The data source.
         features (list): A list of column names to use for clustering.
-        max_k (int, optional): The maximum number of clusters to try. 
+        max_k (int, optional): The maximum number of clusters to try.
         Defaults to 10.
 
     Returns:
-        None. Displays a plot of the sum of squared distances (SSE) for 
+        None. Displays a plot of the sum of squared distances (SSE) for
         different values of k.
     """
     scaler = StandardScaler()
@@ -220,7 +220,7 @@ def silhouette_method(dataframe, features, max_k=10):
     Parameters:
         dataframe (pd.DataFrame): The data source.
         features (list): A list of column names to use for clustering.
-        max_k (int, optional): The maximum number of clusters to try. Defaults 
+        max_k (int, optional): The maximum number of clusters to try. Defaults
         to 10.
 
     Returns:
@@ -244,7 +244,7 @@ def silhouette_method(dataframe, features, max_k=10):
 
 def k_means_clustering(dataframe, features, n_clusters=4):
     """
-    Apply K-Means clustering to the dataframe using selected features and add 
+    Apply K-Means clustering to the dataframe using selected features and add
     the resulting cluster labels to the dataframe.
 
     Parameters:
@@ -304,7 +304,7 @@ def polynomial_fit(dataframe, x_feature, y_feature, degree=3):
 
 def predict_with_confidence(poly_model, dataframe, x_feature, y_feature, confidence=0.95):
     """
-    Generate predictions with a polynomial model, calculate confidence 
+    Generate predictions with a polynomial model, calculate confidence
     intervals, and plot the results.
 
     Parameters:
@@ -312,7 +312,7 @@ def predict_with_confidence(poly_model, dataframe, x_feature, y_feature, confide
         dataframe (pd.DataFrame): The data source.
         x_feature (str): The column name for the independent variable.
         y_feature (str): The column name for the dependent variable.
-        confidence (float, optional): The confidence level for the interval. 
+        confidence (float, optional): The confidence level for the interval.
         Defaults to 0.95.
 
     Returns:
@@ -375,11 +375,11 @@ def main():
 
     Steps:
       1. Load and clean data from 'data.csv'.
-      2. Generate various visualizations including relational plots, bar 
+      2. Generate various visualizations including relational plots, bar
       plots, heatmaps, distributions, and pairplots.
       3. Determine optimal clusters using Elbow and Silhouette methods.
       4. Apply K-Means clustering and visualize the results.
-      5. Fit a polynomial model to the data and plot predictions with 
+      5. Fit a polynomial model to the data and plot predictions with
       confidence intervals.
       6. Calculate and display statistical moments for selected features.
 
