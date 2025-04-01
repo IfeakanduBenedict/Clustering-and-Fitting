@@ -315,8 +315,8 @@ def polynomial_fit(dataframe, x_feature, y_feature, degree=3):
     y_pred = p(x_pred)
     plt.figure(figsize=(10, 6))
     plt.scatter(x, y, label="Data points", alpha=0.6)
-    plt.plot(x_pred, y_pred, color="red", label=f"{
-             degree}-degree Polynomial Fit")
+    plt.plot(x_pred, y_pred, color="red", 
+             label=f"{degree}-degree Polynomial Fit")
     plt.xlabel(x_feature)
     plt.ylabel(y_feature)
     plt.title(f"Polynomial Fit ({degree}-degree)")
