@@ -48,7 +48,8 @@ def load_and_clean_data(data):
     # Drop irrelevant columns (check if they exist)
     columns_to_drop = ["uri", "track_href", "analysis_url", "id", "type"]
     existing_columns = df.columns
-    columns_to_drop = [col for col in columns_to_drop if col in existing_columns]
+    columns_to_drop = [
+        col for col in columns_to_drop if col in existing_columns]
     df.drop(columns=columns_to_drop, inplace=True)
 
     # Remove any rows with missing values
@@ -75,11 +76,17 @@ def relational_plot(dataframe, x_var, y_var, color_var=None):
     """
     plt.figure(figsize=(9, 6))
     sns.scatterplot(
-        data=dataframe, x=x_var, y=y_var, hue=color_var, palette="viridis", alpha=0.7
-    )
+        data=dataframe,
+        x=x_var,
+        y=y_var,
+        hue=color_var,
+        palette="viridis",
+        alpha=0.7)
     plt.title(
-        f"Relational Plot: {x_var.capitalize()} vs {y_var.capitalize()}", fontsize=14
-    )
+        f"Relational Plot: {
+            x_var.capitalize()} vs {
+            y_var.capitalize()}",
+        fontsize=14)
     plt.xlabel(x_var.capitalize(), fontsize=12)
     plt.ylabel(y_var.capitalize(), fontsize=12)
     plt.grid(True)
@@ -108,7 +115,13 @@ def categorical_top_genres_plot(dataframe, top_n=10):
     plt.ylabel("Genre", fontsize=14)
     # Annotate bar values
     for index, value in enumerate(top_genres.values):
-        plt.text(value, index, f" {value}", va="center", fontsize=12, color="black")
+        plt.text(
+            value,
+            index,
+            f" {value}",
+            va="center",
+            fontsize=12,
+            color="black")
     plt.grid(axis="x", linestyle="--", alpha=0.7)
     plt.tight_layout()
     plt.show()
@@ -160,7 +173,8 @@ def plot_distribution(dataframe):
             plt.ylabel("Frequency")
         else:
             sns.countplot(
-                y=dataframe[col], order=dataframe[col].value_counts().index[:15]
+                y=dataframe[col],
+                order=dataframe[col].value_counts().index[:15]
             )
             plt.title(f"Distribution of Categorical Variable: {col}")
             plt.xlabel("Count")
@@ -268,8 +282,11 @@ def k_means_clustering(dataframe, features, n_clusters=4):
     dataframe["cluster"] = kmeans.fit_predict(X_scaled)
     plt.figure(figsize=(10, 6))
     sns.scatterplot(
-        x=features[0], y=features[1], hue="cluster", data=dataframe, palette="Set1"
-    )
+        x=features[0],
+        y=features[1],
+        hue="cluster",
+        data=dataframe,
+        palette="Set1")
     plt.title("K-Means Clustering")
     plt.tight_layout()
     plt.show()
@@ -300,7 +317,8 @@ def polynomial_fit(dataframe, x_feature, y_feature, degree=3):
     y_pred = p(x_pred)
     plt.figure(figsize=(10, 6))
     plt.scatter(x, y, label="Data points", alpha=0.6)
-    plt.plot(x_pred, y_pred, color="red", label=f"{degree}-degree Polynomial Fit")
+    plt.plot(x_pred, y_pred, color="red", label=f"{
+             degree}-degree Polynomial Fit")
     plt.xlabel(x_feature)
     plt.ylabel(y_feature)
     plt.title(f"Polynomial Fit ({degree}-degree)")
@@ -337,7 +355,8 @@ def predict_with_confidence(
     # Calculate standard error using MSE
     se = np.sqrt(mean_squared_error(y, poly_model(x)))
     t_score = t.ppf((1 + confidence) / 2, n - 2)
-    ci = t_score * se * np.sqrt(1 / n + (x_pred - m) ** 2 / np.sum((x - m) ** 2))
+    ci = t_score * se * np.sqrt(1 / n + (x_pred - m)
+                                ** 2 / np.sum((x - m) ** 2))
     plt.figure(figsize=(10, 6))
     plt.scatter(x, y, label="Data points", alpha=0.6)
     plt.plot(x_pred, y_pred, color="red", label="Polynomial Fit")
@@ -347,7 +366,7 @@ def predict_with_confidence(
         y_pred + ci,
         color="grey",
         alpha=0.4,
-        label=f"{int(confidence*100)}% Confidence Interval",
+        label=f"{int(confidence * 100)}% Confidence Interval",
     )
     plt.xlabel(x_feature)
     plt.ylabel(y_feature)
@@ -407,7 +426,8 @@ def main():
     # Load and clean the data from the provided CSV file
     df = load_and_clean_data("data.csv")
 
-    # Visualization: Relational Plot (e.g., danceability vs energy colored by valence)
+    # Visualization: Relational Plot (e.g., danceability vs energy colored by
+    # valence)
     relational_plot(df, "danceability", "energy", "valence")
 
     # Visualization: Top Genres (ensure 'genre' column exists in your data)
@@ -423,9 +443,15 @@ def main():
     plot_distribution(df)
 
     # Visualization: Pairplot of Selected Numeric Variables
-    important_features = ["danceability", "energy", "valence", "tempo", "loudness"]
+    important_features = [
+        "danceability",
+        "energy",
+        "valence",
+        "tempo",
+        "loudness"]
     # Check if these features exist before plotting
-    available_features = [feat for feat in important_features if feat in df.columns]
+    available_features = [
+        feat for feat in important_features if feat in df.columns]
     if len(available_features) >= 2:
         plot_pairplot(df, available_features)
     else:
